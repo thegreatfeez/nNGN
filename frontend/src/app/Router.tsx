@@ -3,6 +3,7 @@ import { Navbar } from "../components/layout/Navbar";
 import { Dashboard } from "../pages/Dashboard";
 import { VaultPage } from "../pages/VaultPage";
 import { LiquidationPage } from "../pages/LiquidationPage";
+import { LandingPage } from "../pages/LandingPage";
 
 function Layout() {
   return (
@@ -15,9 +16,13 @@ function Layout() {
 
 const router = createBrowserRouter([
   {
+    path: "/",
+    element: <LandingPage />,
+  },
+  {
     element: <Layout />,
     children: [
-      { path: "/", element: <Dashboard /> },
+      { path: "/dashboard", element: <Dashboard /> },
       { path: "/vault", element: <VaultPage /> },
       { path: "/liquidate", element: <LiquidationPage /> },
     ],
