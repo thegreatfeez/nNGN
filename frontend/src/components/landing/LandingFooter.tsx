@@ -17,10 +17,8 @@ export const LandingFooter: FC = () => (
         {/* Brand column */}
         <div className="col-span-2 md:col-span-1 space-y-4">
           <div className="flex items-center gap-2.5">
-            <div className="flex-shrink-0 w-8 h-8 bg-[#030303] rounded-lg flex items-center justify-center overflow-hidden shadow-sm">
-              <img src="/nNGNlogo.png" alt="nNGN" className="w-full h-full object-cover" />
-            </div>
-            <span className="font-extrabold tracking-tight text-slate-900 dark:text-neutral-50 text-lg">nNGN</span>
+            <img src="/nNGNlogo.png" alt="NairaStable" className="w-8 h-8 object-contain flex-shrink-0" />
+            <span className="font-extrabold tracking-tight text-slate-900 dark:text-neutral-50 text-lg">NairaStable</span>
           </div>
           <p className="text-sm text-slate-500 dark:text-neutral-500 leading-relaxed max-w-xs">
             The decentralised, over-collateralised Naira stablecoin — built on Arbitrum.
@@ -49,9 +47,9 @@ export const LandingFooter: FC = () => (
 
       {/* Bottom bar */}
       <div className="border-t border-slate-200 dark:border-neutral-800/60 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-        <p className="text-xs font-medium text-slate-500 dark:text-neutral-600">© 2025 nNGN Protocol. All rights reserved.</p>
+        <p className="text-xs font-medium text-slate-500 dark:text-neutral-600">© 2025 NairaStable Protocol. All rights reserved.</p>
         <p className="text-xs font-medium text-slate-500 dark:text-neutral-600 max-w-sm text-center md:text-right">
-          nNGN is experimental software. Not financial advice. Use at your own risk.
+          NairaStable is experimental software. Not financial advice. Use at your own risk.
         </p>
       </div>
     </div>

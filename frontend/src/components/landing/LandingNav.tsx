@@ -49,10 +49,8 @@ export const LandingNav: FC = () => {
       >
         {/* Brand */}
         <Link to="/" className="flex items-center gap-2.5 shrink-0">
-          <div className="flex-shrink-0 w-8 h-8 bg-[#030303] rounded-lg flex items-center justify-center overflow-hidden border border-neutral-800 shadow-sm">
-            <img src="/nNGNlogo.png" alt="nNGN" className="w-full h-full object-cover" />
-          </div>
-          <span className="font-extrabold tracking-tight text-slate-900 dark:text-neutral-50 text-lg">nNGN</span>
+          <img src="/nNGNlogo.png" alt="NairaStable" className="w-15 h-15 object-contain flex-shrink-0" />
+          <span className="font-extrabold tracking-tight text-slate-900 dark:text-neutral-50 text-lg">NairaStable</span>
         </Link>
 
         {/* Nav links */}
@@ -66,6 +64,14 @@ export const LandingNav: FC = () => {
               {item}
             </a>
           ))}
+          <a
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm font-bold text-slate-500 dark:text-neutral-400 hover:text-primary dark:hover:text-accent transition-colors duration-200"
+          >
+            Docs
+          </a>
         </div>
 
         <div className="hidden md:block h-4 w-px bg-slate-300 dark:bg-neutral-800 shrink-0" />
@@ -114,7 +120,7 @@ export const LandingNav: FC = () => {
               className="fixed top-0 right-0 bottom-0 w-3/4 max-w-sm bg-white dark:bg-[#050505] border-l border-slate-200 dark:border-neutral-800 z-[70] shadow-2xl flex flex-col md:hidden"
             >
               <div className="flex items-center justify-between p-6 border-b border-slate-100 dark:border-neutral-900">
-                <span className="font-extrabold tracking-tight text-slate-900 dark:text-neutral-50 text-lg">nNGN Menu</span>
+                <span className="font-extrabold tracking-tight text-slate-900 dark:text-neutral-50 text-lg">NairaStable</span>
                 <button
                   onClick={() => setMenuOpen(false)}
                   className="p-2 text-slate-500 hover:text-slate-900 dark:text-neutral-400 dark:hover:text-neutral-50 transition-colors bg-slate-100 dark:bg-neutral-900 rounded-full"
@@ -133,6 +139,15 @@ export const LandingNav: FC = () => {
                     {item}
                   </a>
                 ))}
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setMenuOpen(false)}
+                  className="w-full text-left p-4 text-base font-black text-slate-600 hover:text-primary dark:text-neutral-400 dark:hover:text-accent hover:bg-slate-50 dark:hover:bg-neutral-900/50 rounded-2xl transition-all"
+                >
+                  Docs
+                </a>
               </div>
 
               <div className="mt-auto p-6 border-t border-slate-100 dark:border-neutral-900">

@@ -93,9 +93,9 @@ const OrbitDiagram: FC = () => (
       <motion.div
         animate={{ rotate: 360 }}
         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-        className="w-14 h-14 rounded-xl bg-[#030303] overflow-hidden flex items-center justify-center shadow-2xl border border-neutral-800"
+        className="w-14 h-14 flex items-center justify-center"
       >
-        <img src="/nNGNlogo.png" alt="nNGN" className="w-full h-full object-cover" />
+        <img src="/nNGNlogo.png" alt="NairaStable" className="w-full h-full object-contain" />
       </motion.div>
     </motion.div>
 

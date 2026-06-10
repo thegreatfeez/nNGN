@@ -100,9 +100,7 @@ const EngineNode: FC = () => (
       bg-white dark:bg-[#0a0a0a] shadow-sm
       flex flex-col items-center justify-center"
   >
-    <div className="w-10 h-10 rounded-[0.4rem] bg-[#030303] overflow-hidden shadow-md flex items-center justify-center">
-      <img src="/nNGNlogo.png" alt="NSEngine" className="w-full h-full object-cover" />
-    </div>
+    <img src="/nNGNlogo.png" alt="NSEngine" className="w-10 h-10 object-contain" />
     <span className="text-[9px] text-slate-500 dark:text-neutral-500 font-bold tracking-wider uppercase">NSEngine</span>
   </motion.div>
 );
