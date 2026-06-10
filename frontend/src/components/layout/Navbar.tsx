@@ -16,7 +16,7 @@ export const Navbar: FC = () => {
             <img src="/nNGNlogo.png" alt="nNGN" className="w-15 h-15 rounded-full object-cover" />
             NairaStable
           </NavLink>
-          <NavLink to="/" className={linkClass} end>Dashboard</NavLink>
+          <NavLink to="/dashboard" className={linkClass} end>Dashboard</NavLink>
           <NavLink to="/vault" className={linkClass}>Vault</NavLink>
           <NavLink to="/liquidate" className={linkClass}>Liquidate</NavLink>
           {import.meta.env.VITE_NAIRA_DATA_URL && (
