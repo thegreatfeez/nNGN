@@ -60,7 +60,6 @@ const CTACard: FC<{
           : "bg-white dark:bg-[#0a0a0a] border border-slate-200 dark:border-neutral-800/80 hover:border-slate-300 dark:hover:border-neutral-700 shadow-sm",
       ].join(" ")}
     >
-      {/* Shine sweep on hover */}
       <div
         className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
         style={{
