@@ -1,32 +1,19 @@
-import { type FC, useEffect, useState } from "react";
+import { type FC, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sun, Moon, Menu, X } from "lucide-react";
+import { useTheme } from "../../hooks/useTheme";
 
 const NAV_LINKS = ["Protocol", "About"] as const;
 
 export const LandingNav: FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [isDark, setIsDark] = useState(() => {
-    if (typeof window !== "undefined") {
-      return localStorage.getItem("theme") === "dark" ||
-        (!localStorage.getItem("theme") && window.matchMedia("(prefers-color-scheme: dark)").matches);
-    }
-    return false;
-  });
+  const { isDark, toggle: setIsDarkToggle } = useTheme();
 
+  // scroll watcher
   useEffect(() => {
-    if (isDark) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-  }, [isDark]);
-
-  useEffect(() => {
+    if (typeof window === "undefined") return;
     const handler = () => setScrolled(window.scrollY > 24);
     window.addEventListener("scroll", handler, { passive: true });
     return () => window.removeEventListener("scroll", handler);
@@ -79,7 +66,7 @@ export const LandingNav: FC = () => {
         {/* CTA, Theme & Mobile Toggle */}
         <div className="flex items-center gap-2 md:gap-4 shrink-0">
           <button
-            onClick={() => setIsDark(!isDark)}
+            onClick={setIsDarkToggle}
             className="hidden md:flex p-2 rounded-full border border-slate-200 dark:border-neutral-800 text-slate-500 hover:text-slate-900 hover:bg-slate-100 dark:text-neutral-400 dark:hover:text-neutral-50 dark:hover:bg-neutral-800 transition-colors"
             aria-label="Toggle dark mode"
           >
@@ -152,7 +139,7 @@ export const LandingNav: FC = () => {
 
               <div className="mt-auto p-6 border-t border-slate-100 dark:border-neutral-900">
                 <button
-                  onClick={() => setIsDark(!isDark)}
+                  onClick={setIsDarkToggle}
                   className="w-full flex items-center justify-between p-4 rounded-2xl border border-slate-200 dark:border-neutral-800 text-slate-600 hover:text-slate-900 dark:text-neutral-400 dark:hover:text-neutral-50 hover:bg-slate-50 dark:hover:bg-neutral-900/50 transition-all font-bold"
                 >
                   <span>{isDark ? "Light Mode" : "Dark Mode"}</span>
