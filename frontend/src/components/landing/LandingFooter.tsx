@@ -1,11 +1,35 @@
 import { type FC } from "react";
 import { Link } from "react-router-dom";
 
-const FOOTER_COLS: Record<string, string[]> = {
-  Ecosystem:  ["Dashboard", "Liquidate"],
-  Protocol:   ["Documentation", "Audits"],
-  Governance: ["Forum", "Discord"],
-  About:      ["Blog", "Brand Kit"],
+type FooterLink = { label: string } & (
+  | { href: string; external?: boolean }
+  | { to: string }
+);
+
+const FOOTER_COLS: Record<string, FooterLink[]> = {
+  Ecosystem: [
+    { label: "Dashboard",  to: "/dashboard" },
+    { label: "Liquidate",  to: "/liquidate" },
+  ],
+  Protocol: [
+    { label: "Documentation", href: "/docs/index.html", external: true },
+    { label: "Audits",        to: "/coming-soon" },
+  ],
+  Governance: [
+    { label: "Forum",   to: "/coming-soon" },
+    { label: "Discord", to: "/coming-soon" },
+  ],
+  About: [
+    { label: "Blog",      to: "/coming-soon" },
+    { label: "Brand Kit", to: "/coming-soon" },
+  ],
+};
+
+const FooterLink: FC<{ link: FooterLink }> = ({ link }) => {
+  const cls = "text-sm font-medium text-slate-600 dark:text-neutral-400 hover:text-slate-900 dark:hover:text-neutral-200 transition-colors duration-200";
+  if ("href" in link)
+    return <a href={link.href} target={link.external ? "_blank" : undefined} rel="noopener noreferrer" className={cls}>{link.label}</a>;
+  return <Link to={link.to} className={cls}>{link.label}</Link>;
 };
 
 export const LandingFooter: FC = () => (
@@ -31,13 +55,8 @@ export const LandingFooter: FC = () => (
             <p className="text-[11px] font-bold uppercase tracking-widest text-slate-400 dark:text-neutral-500">{category}</p>
             <ul className="space-y-2.5">
               {links.map((link) => (
-                <li key={link}>
-                  <Link
-                    to="#"
-                    className="text-sm font-medium text-slate-600 dark:text-neutral-400 hover:text-slate-900 dark:hover:text-neutral-200 transition-colors duration-200"
-                  >
-                    {link}
-                  </Link>
+                <li key={link.label}>
+                  <FooterLink link={link} />
                 </li>
               ))}
             </ul>

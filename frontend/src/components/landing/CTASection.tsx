@@ -18,7 +18,7 @@ export const CTASection: FC = () => (
         title="Read the docs"
         body="Understand collateral ratios, liquidation mechanics, and how to integrate nNGN into your project."
         label="View Documentation"
-        to="#"
+        href="/docs/index.html"
         variant="secondary"
         Icon={BookOpen}
       />
@@ -26,7 +26,7 @@ export const CTASection: FC = () => (
         title="Test the Sandbox"
         body="Experience frictionless borderless commerce. Try our demo e-commerce website integrated natively with nNGN."
         label="Visit NairaMart"
-        to="https://app.nairamart.xyz"
+        href="https://app.nairamart.xyz"
         variant="tertiary"
         Icon={ShoppingCart}
       />
@@ -38,10 +38,9 @@ const CTACard: FC<{
   title: string;
   body: string;
   label: string;
-  to: string;
   variant: "primary" | "secondary" | "tertiary";
   Icon: FC<{ size?: number; className?: string }>;
-}> = ({ title, body, label, to, variant, Icon }) => {
+} & ({ to: string; href?: never } | { href: string; to?: never })> = ({ title, body, label, to, href, variant, Icon }) => {
   const isPrimary = variant === "primary";
   const isTertiary = variant === "tertiary";
 
@@ -74,19 +73,37 @@ const CTACard: FC<{
         <p className={`text-sm leading-relaxed ${isPrimary ? "text-slate-600 dark:text-emerald-100/75" : isTertiary ? "text-slate-600 dark:text-blue-100/75" : "text-slate-500 dark:text-neutral-400"}`}>{body}</p>
       </div>
 
-      <Link
-        to={to}
-        className={[
-          "inline-flex items-center gap-2 text-sm font-bold w-fit transition-all duration-200 mt-auto",
-          isPrimary
-            ? "text-primary dark:text-accent hover:text-primary-hover dark:hover:text-white hover:gap-3"
-            : isTertiary
-            ? "text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-white hover:gap-3"
-            : "text-slate-600 dark:text-accent hover:text-slate-900 dark:hover:text-secondary hover:gap-3",
-        ].join(" ")}
-      >
-        {label} <Icon size={16} />
-      </Link>
+      {href ? (
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={[
+            "inline-flex items-center gap-2 text-sm font-bold w-fit transition-all duration-200 mt-auto",
+            isPrimary
+              ? "text-primary dark:text-accent hover:text-primary-hover dark:hover:text-white hover:gap-3"
+              : isTertiary
+              ? "text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-white hover:gap-3"
+              : "text-slate-600 dark:text-accent hover:text-slate-900 dark:hover:text-secondary hover:gap-3",
+          ].join(" ")}
+        >
+          {label} <Icon size={16} />
+        </a>
+      ) : (
+        <Link
+          to={to!}
+          className={[
+            "inline-flex items-center gap-2 text-sm font-bold w-fit transition-all duration-200 mt-auto",
+            isPrimary
+              ? "text-primary dark:text-accent hover:text-primary-hover dark:hover:text-white hover:gap-3"
+              : isTertiary
+              ? "text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-white hover:gap-3"
+              : "text-slate-600 dark:text-accent hover:text-slate-900 dark:hover:text-secondary hover:gap-3",
+          ].join(" ")}
+        >
+          {label} <Icon size={16} />
+        </Link>
+      )}
     </motion.div>
   );
 };

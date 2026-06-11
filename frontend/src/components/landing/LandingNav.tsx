@@ -52,7 +52,7 @@ export const LandingNav: FC = () => {
             </a>
           ))}
           <a
-            href="#"
+            href="/docs/index.html"
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm font-bold text-slate-500 dark:text-neutral-400 hover:text-primary dark:hover:text-accent transition-colors duration-200"
@@ -127,7 +127,7 @@ export const LandingNav: FC = () => {
                   </a>
                 ))}
                 <a
-                  href="#"
+                  href="/docs/index.html"
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setMenuOpen(false)}

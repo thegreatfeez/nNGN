@@ -19,6 +19,14 @@ export const Navbar: FC = () => {
           <NavLink to="/dashboard" className={linkClass} end>Dashboard</NavLink>
           <NavLink to="/vault" className={linkClass}>Vault</NavLink>
           <NavLink to="/liquidate" className={linkClass}>Liquidate</NavLink>
+          <a
+            href="/docs/index.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm font-medium text-slate-400 hover:text-slate-200 transition-colors"
+          >
+            Docs
+          </a>
           {import.meta.env.VITE_NAIRA_DATA_URL && (
             <a
               href={import.meta.env.VITE_NAIRA_DATA_URL}

@@ -6,6 +6,7 @@ import {
   ShieldCheck,
   Gavel,
   ExternalLink,
+  BookOpen,
   ChevronLeft,
   ChevronRight,
   X,
@@ -146,6 +147,51 @@ export const DashboardSidebar: FC<Props> = ({
             )}
           </NavLink>
         ))}
+
+        {/* Resources section */}
+        <AnimatePresence>
+          {(forMobile || !collapsed) && (
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="text-[10px] font-bold uppercase tracking-widest text-slate-500 dark:text-neutral-500 px-3 pt-4 pb-2"
+            >
+              Resources
+            </motion.p>
+          )}
+        </AnimatePresence>
+        <a
+          href="/docs/index.html"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`relative flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-600 dark:text-neutral-400 hover:bg-slate-100 dark:hover:bg-neutral-800 hover:text-slate-900 dark:hover:text-neutral-100 transition-all duration-200 group ${
+            !forMobile && collapsed ? "justify-center" : ""
+          }`}
+        >
+          <BookOpen
+            size={18}
+            className="shrink-0 text-slate-500 dark:text-neutral-500 group-hover:text-slate-800 dark:group-hover:text-neutral-200 transition-colors"
+          />
+          <AnimatePresence>
+            {(forMobile || !collapsed) && (
+              <motion.span
+                initial={{ opacity: 0, width: 0 }}
+                animate={{ opacity: 1, width: "auto" }}
+                exit={{ opacity: 0, width: 0 }}
+                transition={{ duration: 0.2 }}
+                className="overflow-hidden whitespace-nowrap"
+              >
+                Documentation
+              </motion.span>
+            )}
+          </AnimatePresence>
+          {!forMobile && collapsed && (
+            <div className="absolute left-full ml-3 px-2.5 py-1.5 bg-slate-800 dark:bg-white text-white dark:text-slate-900 text-xs font-semibold rounded-lg opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity whitespace-nowrap z-[100]">
+              Documentation
+            </div>
+          )}
+        </a>
 
         {/* NairaData external link */}
         {import.meta.env.VITE_NAIRA_DATA_URL && (
