@@ -104,5 +104,6 @@ The full protocol docs cover core concepts, a step-by-step user guide, developer
 - Uniswap V3 and Camelot liquidity pools — swap any token for nNGN without a vault
 - ZeroDev Account Abstraction (ERC-4337) — gasless transactions; users pay fees in nNGN or have them sponsored
 - Mainnet deployment
+- Dune Analytics integration — live protocol dashboard tracking TVL, mint/burn volume, vault activity, and liquidation history (Arbitrum mainnet only)
 - Governance token
 - NGN-denominated DeFi integrations
