@@ -14,6 +14,7 @@ import { Spinner } from "../components/shared/Spinner";
 import {
   ArrowUpRight,
   ArrowRight,
+  AlertCircle,
   BarChart3,
   Landmark,
   Coins,
@@ -40,12 +41,23 @@ const itemVariants: Variants = {
 
 /* ─── Dashboard ───────────────────────────────────────── */
 export const Dashboard: FC = () => {
-  const { isConnected } = useAccount();
+  const { isConnected, address } = useAccount();
   const { data: ethNgnPrice, isLoading: priceLoading } = useEthNgnPrice();
   const { vault, isLoading: vaultLoading } = useVault();
   const { insight, isLoading: insightLoading, error: insightError } =
     useMarketInsight(vault);
   const { data: allVaults } = useAllVaults();
+
+  const { data: walletBalanceRaw } = useReadContract({
+    ...ngnContract,
+    functionName: "balanceOf",
+    args: address ? [address] : undefined,
+    query: { enabled: !!address, refetchInterval: 15_000 },
+  });
+  const walletBalance =
+    walletBalanceRaw !== undefined
+      ? nngnBaseToDisplay(walletBalanceRaw as bigint)
+      : null;
 
   const { data: totalSupply } = useReadContract({
     ...ngnContract,
@@ -169,26 +181,48 @@ export const Dashboard: FC = () => {
               </Link>
             </div>
           ) : (
-            <motion.div
-              whileHover={{ scale: 1.01 }}
-              className="rounded-2xl border-2 border-dashed border-slate-300 dark:border-neutral-700 bg-slate-100/60 dark:bg-neutral-900/40 p-12 text-center space-y-3"
-            >
-              <div className="mx-auto w-12 h-12 rounded-2xl bg-teal-100 dark:bg-teal-500/10 flex items-center justify-center mb-2">
-                <Box size={22} className="text-teal-600 dark:text-teal-400" />
-              </div>
-              <p className="text-slate-700 dark:text-slate-300 font-semibold text-lg">
-                No vault yet
-              </p>
-              <p className="text-slate-500 dark:text-neutral-500 text-sm font-medium">
-                Deposit ETH collateral to mint nNGN
-              </p>
-              <Link
-                to="/vault"
-                className="inline-flex items-center gap-1.5 mt-2 px-5 py-2.5 bg-primary dark:bg-teal-500 hover:bg-primary-hover dark:hover:bg-teal-400 text-white text-sm font-bold rounded-xl transition-all duration-200"
+            <div className="space-y-3">
+              {walletBalance !== null && walletBalance > 0 && (
+                <div className="rounded-2xl border border-slate-200 dark:border-neutral-800 bg-white dark:bg-neutral-900/60 overflow-hidden shadow-sm">
+                  <div className="px-5 py-4 border-b border-slate-200 dark:border-neutral-800 bg-white dark:bg-neutral-900/80">
+                    <h2 className="text-sm font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider">
+                      Wallet Balance
+                    </h2>
+                  </div>
+                  <div className="px-5 py-4 flex items-center gap-3">
+                    <img src="/nNGNlogo.png" alt="" className="w-8 h-8 rounded-full object-cover" />
+                    <div>
+                      <p className="text-xl font-extrabold tabular-nums text-slate-900 dark:text-white">
+                        {formatNgn(walletBalance)}
+                      </p>
+                      <p className="text-xs text-slate-500 dark:text-neutral-500 font-medium mt-0.5">
+                        nNGN in this wallet
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+              <motion.div
+                whileHover={{ scale: 1.01 }}
+                className="rounded-2xl border-2 border-dashed border-slate-300 dark:border-neutral-700 bg-slate-100/60 dark:bg-neutral-900/40 p-12 text-center space-y-3"
               >
-                Open vault <ArrowRight size={14} />
-              </Link>
-            </motion.div>
+                <div className="mx-auto w-12 h-12 rounded-2xl bg-teal-100 dark:bg-teal-500/10 flex items-center justify-center mb-2">
+                  <Box size={22} className="text-teal-600 dark:text-teal-400" />
+                </div>
+                <p className="text-slate-700 dark:text-slate-300 font-semibold text-lg">
+                  No vault yet
+                </p>
+                <p className="text-slate-500 dark:text-neutral-500 text-sm font-medium">
+                  Deposit ETH collateral to mint nNGN
+                </p>
+                <Link
+                  to="/vault"
+                  className="inline-flex items-center gap-1.5 mt-2 px-5 py-2.5 bg-primary dark:bg-teal-500 hover:bg-primary-hover dark:hover:bg-teal-400 text-white text-sm font-bold rounded-xl transition-all duration-200"
+                >
+                  Open vault <ArrowRight size={14} />
+                </Link>
+              </motion.div>
+            </div>
           )
         ) : (
           <motion.div

@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Sun, Moon, Menu, X } from "lucide-react";
 import { useTheme } from "../../hooks/useTheme";
 
-const NAV_LINKS = ["Protocol", "About"] as const;
+const NAV_LINKS = ["About"] as const;
 
 export const LandingNav: FC = () => {
   const [scrolled, setScrolled] = useState(false);
