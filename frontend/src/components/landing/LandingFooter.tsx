@@ -10,6 +10,7 @@ const FOOTER_COLS: Record<string, FooterLink[]> = {
   Ecosystem: [
     { label: "Dashboard",  to: "/dashboard" },
     { label: "Liquidate",  to: "/liquidate" },
+    { label: "Faucets",    href: "#faucets", external: false },
   ],
   Protocol: [
     { label: "Documentation", href: "/docs/index.html", external: true },

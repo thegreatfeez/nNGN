@@ -101,6 +101,8 @@ The full protocol docs cover core concepts, a step-by-step user guide, developer
 ## Roadmap
 
 - Multi-collateral support (wBTC, ARB, stETH, USDC)
+- Uniswap V3 and Camelot liquidity pools — swap any token for nNGN without a vault
+- ZeroDev Account Abstraction (ERC-4337) — gasless transactions; users pay fees in nNGN or have them sponsored
 - Mainnet deployment
 - Governance token
 - NGN-denominated DeFi integrations

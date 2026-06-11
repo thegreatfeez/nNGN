@@ -184,6 +184,11 @@
             <div class="feature-desc">How the real-time USD/NGN price gets on-chain when no public feed exists.</div>
           </div>
           <div class="feature-card">
+            <div class="feature-icon">💧</div>
+            <div class="feature-title">Providing Liquidity</div>
+            <div class="feature-desc">Create Uniswap pools so anyone can swap tokens for nNGN — no vault required.</div>
+          </div>
+          <div class="feature-card">
             <div class="feature-icon">🗺️</div>
             <div class="feature-title">Roadmap</div>
             <div class="feature-desc">What's coming next: wBTC, ARB, stETH, USDC collateral, mainnet, and more.</div>
@@ -345,8 +350,88 @@ Your CR:            (₦3,200 ÷ ₦1,000) × 100 = 320%  ✅</code></pre>
           <div class="callout-body">
             <div class="callout-title">This is a testnet</div>
             <p>NairaStable currently runs on Arbitrum Sepolia — a test network. All ETH and nNGN
-            here are test tokens with no real monetary value. Get free testnet ETH from
-            <a href="https://faucet.quicknode.com/arbitrum/sepolia" target="_blank" rel="noopener">QuickNode Arbitrum Sepolia Faucet</a>.</p>
+            here are test tokens with no real monetary value. See the section below for all the
+            ways to get free testnet ETH.</p>
+          </div>
+        </div>
+
+        <h2>Getting Testnet ETH</h2>
+        <p>
+          You need ETH on <strong>Arbitrum Sepolia</strong> to pay for transactions. There are two
+          routes: claim it directly from an Arbitrum Sepolia faucet (fastest), or get Sepolia ETH
+          first and bridge it across (more reliable if direct faucets are rate-limited).
+        </p>
+
+        <h3>Route A — Claim Directly on Arbitrum Sepolia</h3>
+        <p>These faucets send ETH straight to Arbitrum Sepolia. No bridging needed.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Faucet</th><th>Notes</th><th>Link</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>QuickNode</strong></td>
+                <td>No sign-up required. Small drip (~0.001 ETH).</td>
+                <td><a href="https://faucet.quicknode.com/arbitrum/sepolia" target="_blank" rel="noopener">faucet.quicknode.com ↗</a></td>
+              </tr>
+              <tr>
+                <td><strong>Alchemy</strong></td>
+                <td>Free account required. Larger drip amounts.</td>
+                <td><a href="https://www.alchemy.com/faucets/arbitrum-sepolia" target="_blank" rel="noopener">alchemy.com/faucets ↗</a></td>
+              </tr>
+              <tr>
+                <td><strong>Chainlink</strong></td>
+                <td>Requires a small mainnet wallet balance.</td>
+                <td><a href="https://faucets.chain.link/arbitrum-sepolia" target="_blank" rel="noopener">faucets.chain.link ↗</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Route B — Get Sepolia ETH, Then Bridge</h3>
+        <p>
+          If Arbitrum Sepolia faucets are rate-limited, get ETH on Ethereum Sepolia first,
+          then bridge it to Arbitrum Sepolia using the official Arbitrum bridge.
+        </p>
+
+        <ol class="step-list">
+          <li>
+            <div class="step-content">
+              <div class="step-title">Claim Ethereum Sepolia ETH</div>
+              <div class="step-desc">Use one of these Sepolia faucets. All are free:
+                <ul style="margin-top:8px">
+                  <li><a href="https://www.alchemy.com/faucets/ethereum-sepolia" target="_blank" rel="noopener">Alchemy Sepolia Faucet ↗</a> — free account, reliable</li>
+                  <li><a href="https://faucet.quicknode.com/ethereum/sepolia" target="_blank" rel="noopener">QuickNode Sepolia Faucet ↗</a> — no sign-up</li>
+                  <li><a href="https://faucets.chain.link/sepolia" target="_blank" rel="noopener">Chainlink Sepolia Faucet ↗</a> — requires mainnet balance</li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="step-content">
+              <div class="step-title">Open the Arbitrum Bridge</div>
+              <div class="step-desc">Go to
+                <a href="https://bridge.arbitrum.io/" target="_blank" rel="noopener">bridge.arbitrum.io ↗</a>.
+                Connect your wallet, then click the <strong>Testnet</strong> toggle (usually a
+                switch at the bottom of the page) to show testnet networks.</div>
+            </div>
+          </li>
+          <li>
+            <div class="step-content">
+              <div class="step-title">Bridge Sepolia → Arbitrum Sepolia</div>
+              <div class="step-desc">Select <strong>Ethereum Sepolia</strong> as the source and
+              <strong>Arbitrum Sepolia</strong> as the destination. Enter the amount to bridge and
+              confirm. Bridging takes ~10–15 minutes to arrive on Arbitrum Sepolia.</div>
+            </div>
+          </li>
+        </ol>
+
+        <div class="callout tip">
+          <div class="callout-icon">💡</div>
+          <div class="callout-body">
+            <div class="callout-title">How much do you need?</div>
+            <p>A few test transactions (deposit, mint, repay) cost less than 0.001 ETH in gas
+            on Arbitrum Sepolia. Even the smallest faucet drip is more than enough to explore
+            the full protocol.</p>
           </div>
         </div>
 
@@ -463,7 +548,235 @@ Your CR:            (₦3,200 ÷ ₦1,000) × 100 = 320%  ✅</code></pre>
       </section>
 
       <!-- ══════════════════════════════════════════════════════ -->
-      <!-- PAGE 3 · Liquidations                                  -->
+      <!-- PAGE 3 · Providing Liquidity                           -->
+      <!-- ══════════════════════════════════════════════════════ -->
+      <section class="doc-page" id="page-liquidity">
+
+        <h1>Providing Liquidity</h1>
+        <p class="page-subtitle">
+          Make nNGN accessible to everyone — not just vault creators. When liquidity exists on
+          Uniswap, anyone can swap ETH, USDC, or ARB directly for nNGN with no vault required.
+        </p>
+
+        <h2>Why Liquidity Pools Matter</h2>
+        <p>
+          Minting nNGN through the CDP vault requires depositing ETH as collateral — a great model
+          for sophisticated DeFi users, but a barrier for someone who just wants ₦5,000 of nNGN
+          to pay a bill or send a remittance. Uniswap liquidity pools remove that barrier.
+        </p>
+        <p>
+          When liquidity providers (LPs) deposit nNGN and ETH (or USDC) into a Uniswap pool,
+          any user can instantly swap their existing tokens for nNGN — like a 24/7 on-chain
+          bureau de change, with no intermediary and no minimum deposit.
+        </p>
+
+        <div class="callout info">
+          <div class="callout-icon">ℹ️</div>
+          <div class="callout-body">
+            <div class="callout-title">Testnet notice</div>
+            <p>NairaStable is currently on Arbitrum Sepolia. Uniswap V3 is also deployed on
+            Arbitrum Sepolia, so you can create test pools today. On mainnet, Uniswap V3 and
+            Camelot pools will be the primary way everyday users acquire nNGN without opening
+            a vault.</p>
+          </div>
+        </div>
+
+        <h2>Swapping Tokens for nNGN</h2>
+        <p>
+          If an nNGN liquidity pool already exists on Uniswap, anyone can swap directly into
+          nNGN in a few clicks — no vault, no collateral, no protocol interaction needed.
+        </p>
+
+        <ol class="step-list">
+          <li>
+            <div class="step-content">
+              <div class="step-title">Open Uniswap on Arbitrum Sepolia</div>
+              <div class="step-desc">Go to the Uniswap app and connect your wallet. Make sure
+              your wallet is set to Arbitrum Sepolia. Click <strong>Swap</strong> in the top
+              navigation.</div>
+            </div>
+          </li>
+          <li>
+            <div class="step-content">
+              <div class="step-title">Select Your Tokens</div>
+              <div class="step-desc">Set the <em>You pay</em> token to ETH, USDC, or ARB —
+              whatever you hold. Set the <em>You receive</em> token to nNGN. If nNGN doesn't
+              appear in the list, paste the contract address directly:
+              <code>0xb4C0f815950E1AEC52EdAf9a80586EBFF2c42946</code></div>
+            </div>
+          </li>
+          <li>
+            <div class="step-content">
+              <div class="step-title">Enter an Amount and Review</div>
+              <div class="step-desc">Enter how much you want to spend or receive. Uniswap
+              shows the rate and estimated price impact. A pool must exist for the swap to
+              go through — if the app shows "Insufficient liquidity", a pool needs to be
+              created first (see below).</div>
+            </div>
+          </li>
+          <li>
+            <div class="step-content">
+              <div class="step-title">Confirm the Swap</div>
+              <div class="step-desc">Review the details and click <strong>Swap</strong>.
+              Confirm the transaction in your wallet. nNGN arrives in your wallet within
+              seconds once the transaction confirms on Arbitrum.</div>
+            </div>
+          </li>
+        </ol>
+
+        <h2>Creating an nNGN Liquidity Pool</h2>
+        <p>
+          If no pool exists yet — or you want to earn trading fees by providing liquidity —
+          you can create or join an nNGN pool on Uniswap V3. You'll need nNGN to do this,
+          so mint some from your vault first (see the User Guide).
+        </p>
+
+        <div class="callout tip">
+          <div class="callout-icon">💡</div>
+          <div class="callout-body">
+            <div class="callout-title">You need nNGN before you can add it</div>
+            <p>Mint nNGN from your vault (Vault → Mint tab in the DApp), then use that nNGN
+            alongside ETH or USDC when you create the pool. Both sides of the pair are
+            required upfront.</p>
+          </div>
+        </div>
+
+        <ol class="step-list">
+          <li>
+            <div class="step-content">
+              <div class="step-title">Go to Pool → New Position on Uniswap</div>
+              <div class="step-desc">Open the Uniswap app, click <strong>Pool</strong> in the
+              top nav, then <strong>New Position</strong>. Confirm your wallet is on
+              Arbitrum Sepolia.</div>
+            </div>
+          </li>
+          <li>
+            <div class="step-content">
+              <div class="step-title">Select the Token Pair</div>
+              <div class="step-desc">Choose your base token (ETH or USDC) and set the
+              second token to nNGN by pasting:
+              <code>0xb4C0f815950E1AEC52EdAf9a80586EBFF2c42946</code>.
+              The recommended pairs are <strong>nNGN / ETH</strong> and
+              <strong>nNGN / USDC</strong>.</div>
+            </div>
+          </li>
+          <li>
+            <div class="step-content">
+              <div class="step-title">Choose a Fee Tier</div>
+              <div class="step-desc"><strong>0.3%</strong> is standard for most token pairs.
+              <strong>0.05%</strong> works better when nNGN is paired with a stablecoin like
+              USDC — lower fees attract more volume on stable pairs.</div>
+            </div>
+          </li>
+          <li>
+            <div class="step-content">
+              <div class="step-title">Set a Price Range</div>
+              <div class="step-desc">Click <strong>Full Range</strong> for the simplest
+              option — your liquidity covers all prices and requires no active management.
+              For concentrated liquidity (more fees, more active management), set a range
+              around the current ETH/nNGN rate.</div>
+            </div>
+          </li>
+          <li>
+            <div class="step-content">
+              <div class="step-title">Deposit Amounts and Confirm</div>
+              <div class="step-desc">Enter how much of each token to deposit. The ratio is
+              set by the current price. Click <strong>Preview</strong>, then
+              <strong>Add</strong>, and confirm the transaction(s) in your wallet.
+              You'll receive a Uniswap V3 LP position NFT representing your share
+              of the pool.</div>
+            </div>
+          </li>
+        </ol>
+
+        <h2>Recommended Pair</h2>
+        <p>
+          Because the protocol currently only accepts <strong>ETH as collateral</strong>,
+          nNGN is minted from ETH — making <strong>nNGN / ETH</strong> the only natural pair
+          right now. After minting, you have nNGN in your wallet and residual ETH — both sides
+          of the pool come directly from the same workflow with no extra tokens needed.
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Pair</th><th>Fee Tier</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>nNGN / ETH</strong></td>
+                <td>0.3%</td>
+                <td>✅ Recommended now — matches the single-collateral ETH model</td>
+              </tr>
+              <tr>
+                <td><strong>nNGN / USDC</strong></td>
+                <td>0.05%</td>
+                <td>⏳ Future — natural once USDC collateral support ships (Phase 2)</td>
+              </tr>
+              <tr>
+                <td><strong>nNGN / ARB</strong></td>
+                <td>0.3%</td>
+                <td>⏳ Future — natural once ARB collateral support ships (Phase 2)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout info">
+          <div class="callout-icon">ℹ️</div>
+          <div class="callout-body">
+            <div class="callout-title">Uniswap is permissionless</div>
+            <p>You <em>can</em> technically create any pair on Uniswap — nNGN/USDC, nNGN/ARB,
+            or anything else — as long as you hold both tokens. The table above reflects what
+            makes sense <em>within the current protocol</em>. As multi-collateral support is
+            added in Phase 2, more pairs become the natural choice.</p>
+          </div>
+        </div>
+
+        <h2>Earning LP Fees</h2>
+        <p>
+          Every swap through a Uniswap pool pays a fee to liquidity providers — split
+          proportionally among all LPs in the pool. When you add liquidity to an nNGN pool,
+          you earn your share of every trade that executes within your price range. Fees
+          accumulate automatically and can be collected at any time from the Pool page on
+          Uniswap.
+        </p>
+
+        <h2>Understanding Impermanent Loss</h2>
+        <p>
+          As an LP, you hold a mix of both assets. If the relative price between them shifts
+          significantly — say ETH doubles in USD terms — the pool rebalances, and you end up
+          holding more of the cheaper asset. The difference vs simply holding is called
+          <strong>impermanent loss</strong>. For nNGN pools, if the ₦1 peg holds and your
+          price range stays active, the fees you earn typically outweigh this effect.
+        </p>
+
+        <div class="callout warning">
+          <div class="callout-icon">⚠️</div>
+          <div class="callout-body">
+            <div class="callout-title">LP positions carry risk</div>
+            <p>Providing liquidity is not the same as holding tokens. If ETH moves sharply
+            relative to nNGN, your position composition shifts. Understand how Uniswap V3
+            concentrated liquidity works before committing large amounts.</p>
+          </div>
+        </div>
+
+        <h2>Removing Liquidity</h2>
+        <p>
+          To exit your position, go to the Uniswap Pool page, select your nNGN position,
+          click <strong>Remove Liquidity</strong>, and choose how much to withdraw. Your
+          tokens are returned to your wallet immediately, including any uncollected fees.
+        </p>
+
+        <h2>What Liquidity Enables at Mainnet</h2>
+        <p>
+          Deep nNGN liquidity on Uniswap and Camelot will be the main route to nNGN for
+          everyday users on mainnet — people paying for goods, receiving remittances, or
+          holding Naira-denominated savings. It also strengthens the peg: arbitrageurs
+          can instantly buy nNGN when it trades below ₦1 or sell when it trades above,
+          keeping the market price locked to the peg.
+        </p>
+
+      </section>
+
+      <!-- ══════════════════════════════════════════════════════ -->
+      <!-- PAGE 4 · Liquidations                                  -->
       <!-- ══════════════════════════════════════════════════════ -->
       <section class="doc-page" id="page-liquidations">
 
@@ -583,7 +896,7 @@ You liquidate (cover full ₦1,500 debt):
       </section>
 
       <!-- ══════════════════════════════════════════════════════ -->
-      <!-- PAGE 4 · Developer Integration                         -->
+      <!-- PAGE 5 · Developer Integration                         -->
       <!-- ══════════════════════════════════════════════════════ -->
       <section class="doc-page" id="page-developer">
 
@@ -822,7 +1135,7 @@ const unwatch = publicClient.watchContractEvent({
       </section>
 
       <!-- ══════════════════════════════════════════════════════ -->
-      <!-- PAGE 5 · Fintech & Non-Web3 Integration                -->
+      <!-- PAGE 6 · Fintech & Non-Web3 Integration                -->
       <!-- ══════════════════════════════════════════════════════ -->
       <section class="doc-page" id="page-fintech">
 
@@ -984,7 +1297,7 @@ async function verifyPayment(txHash, expectedPayer, expectedAmount) {
       </section>
 
       <!-- ══════════════════════════════════════════════════════ -->
-      <!-- PAGE 6 · Oracle Architecture                           -->
+      <!-- PAGE 7 · Oracle Architecture                           -->
       <!-- ══════════════════════════════════════════════════════ -->
       <section class="doc-page" id="page-oracle">
 
@@ -1157,7 +1470,7 @@ function getEthNgnPrice(address ethUsdFeed, address usdNgnFeed)
       </section>
 
       <!-- ══════════════════════════════════════════════════════ -->
-      <!-- PAGE 7 · Contract Reference                            -->
+      <!-- PAGE 8 · Contract Reference                            -->
       <!-- ══════════════════════════════════════════════════════ -->
       <section class="doc-page" id="page-reference">
 
@@ -1310,7 +1623,7 @@ function getEthNgnPrice(address ethUsdFeed, address usdNgnFeed)
       </section>
 
       <!-- ══════════════════════════════════════════════════════ -->
-      <!-- PAGE 8 · Roadmap                                       -->
+      <!-- PAGE 9 · Roadmap                                       -->
       <!-- ══════════════════════════════════════════════════════ -->
       <section class="doc-page" id="page-roadmap">
 
@@ -1389,6 +1702,13 @@ function getEthNgnPrice(address ethUsdFeed, address usdNgnFeed)
             <li class="planned">Mainnet deployment with battle-tested code</li>
             <li class="planned">Real nNGN ↔ NGN fiat on/off-ramp partnerships</li>
             <li class="planned">Keeper multisig for USD/NGN oracle if decentralised feed not yet available</li>
+            <li class="planned">
+              <strong>ZeroDev Account Abstraction (ERC-4337)</strong> — Gasless transactions
+              for end users. ZeroDev's Paymaster infrastructure lets users interact with
+              NairaStable without holding ETH for gas. Users can pay gas fees in nNGN itself,
+              or have fees fully sponsored during onboarding. Essential for reaching everyday
+              Nigerians who hold nNGN but no ETH.
+            </li>
           </ul>
         </div>
 
@@ -1404,7 +1724,7 @@ function getEthNgnPrice(address ethUsdFeed, address usdNgnFeed)
           </div>
           <ul class="roadmap-checklist">
             <li class="planned">Community governance of protocol parameters (fees, ratios)</li>
-            <li class="planned">nNGN liquidity pools on Arbitrum DEXes (Uniswap, Camelot)</li>
+            <li class="planned">Deep nNGN liquidity pools on Uniswap V3 and Camelot — making nNGN swappable from ETH, USDC, and ARB without needing a vault</li>
             <li class="planned">Integration with Arbitrum lending protocols</li>
             <li class="planned">Mobile payment SDK for Nigerian businesses</li>
             <li class="planned">Savings products denominated in nNGN</li>

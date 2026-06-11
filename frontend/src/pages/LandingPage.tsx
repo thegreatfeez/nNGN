@@ -6,6 +6,7 @@ import { EcosystemSection } from "../components/landing/EcosystemSection";
 import { FlowSection }      from "../components/landing/FlowSection";
 import { AboutSection }     from "../components/landing/AboutSection";
 import { CTASection }       from "../components/landing/CTASection";
+import { FaucetsSection }   from "../components/landing/FaucetsSection";
 import { LandingFooter }    from "../components/landing/LandingFooter";
 
 /**
@@ -21,6 +22,7 @@ export const LandingPage: FC = () => (
     <AboutSection />
     <FlowSection />
     <CTASection />
+    <FaucetsSection />
     <LandingFooter />
   </div>
 );

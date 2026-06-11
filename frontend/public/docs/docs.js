@@ -4,6 +4,7 @@ const PAGES = [
   { id: 'intro',      title: 'Introduction',                section: 'Getting Started' },
   { id: 'concepts',   title: 'Core Concepts',               section: 'Getting Started' },
   { id: 'userguide',  title: 'User Guide',                  section: 'Using NairaStable' },
+  { id: 'liquidity',  title: 'Providing Liquidity',         section: 'Using NairaStable' },
   { id: 'liquidations', title: 'Liquidations',              section: 'Using NairaStable' },
   { id: 'developer',  title: 'Developer Integration',       section: 'Build with nNGN' },
   { id: 'fintech',    title: 'Fintech & Non-Web3',          section: 'Build with nNGN' },
