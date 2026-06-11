@@ -18,7 +18,6 @@ import {
   BarChart3,
   Landmark,
   Coins,
-  BrainCircuit,
   HeartPulse,
   Box,
 } from "lucide-react";
