@@ -22,6 +22,12 @@ const DIRECT_FAUCETS = [
 
 const SEPOLIA_FAUCETS = [
   {
+    name: "Google Cloud Sepolia",
+    note: "No sign-up. No mainnet balance required. Truly free.",
+    url: "https://cloud.google.com/application/web3/faucet/ethereum/sepolia",
+    recommended: true,
+  },
+  {
     name: "Alchemy Sepolia",
     note: "Free account, most reliable.",
     url: "https://www.alchemy.com/faucets/ethereum-sepolia",
@@ -126,10 +132,21 @@ export const FaucetsSection: FC = () => (
                   href={f.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center justify-between gap-4 rounded-xl px-4 py-3 border border-slate-100 dark:border-neutral-800 hover:border-blue-500/30 hover:bg-blue-500/5 transition-all duration-200"
+                  className={`group flex items-center justify-between gap-4 rounded-xl px-4 py-3 border transition-all duration-200 ${
+                    f.recommended
+                      ? "border-blue-300 dark:border-blue-700 bg-blue-50 dark:bg-blue-950/30 hover:border-blue-400 dark:hover:border-blue-600"
+                      : "border-slate-100 dark:border-neutral-800 hover:border-blue-500/30 hover:bg-blue-500/5"
+                  }`}
                 >
                   <div>
-                    <p className="text-sm font-bold text-slate-800 dark:text-neutral-200">{f.name}</p>
+                    <div className="flex items-center gap-2">
+                      <p className="text-sm font-bold text-slate-800 dark:text-neutral-200">{f.name}</p>
+                      {f.recommended && (
+                        <span className="text-[10px] font-bold uppercase tracking-wide px-1.5 py-0.5 rounded-md bg-blue-500 text-white">
+                          Recommended
+                        </span>
+                      )}
+                    </div>
                     <p className="text-xs text-slate-500 dark:text-neutral-500 mt-0.5">{f.note}</p>
                   </div>
                   <ExternalLink size={14} className="text-slate-400 dark:text-neutral-600 group-hover:text-blue-500 shrink-0 transition-colors" />
