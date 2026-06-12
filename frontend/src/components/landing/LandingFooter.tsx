@@ -67,7 +67,7 @@ export const LandingFooter: FC = () => (
 
       {/* Bottom bar */}
       <div className="border-t border-slate-200 dark:border-neutral-800/60 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-        <p className="text-xs font-medium text-slate-500 dark:text-neutral-600">© 2025 NairaStable Protocol. All rights reserved.</p>
+        <p className="text-xs font-medium text-slate-500 dark:text-neutral-600">© {new Date().getFullYear()} NairaStable Protocol. All rights reserved.</p>
         <p className="text-xs font-medium text-slate-500 dark:text-neutral-600 max-w-sm text-center md:text-right">
           NairaStable is experimental software. Not financial advice. Use at your own risk.
         </p>
