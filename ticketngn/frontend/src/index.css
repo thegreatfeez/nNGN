@@ -1,0 +1,143 @@
+@import "tailwindcss";
+
+/* ── Keyframes ─────────────────────────────────────────────── */
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.94); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes ticketDrop {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0%   50%; }
+  50%       { background-position: 100% 50%; }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 0   rgba(124,58,237,0.45); }
+  50%       { box-shadow: 0 0 0 7px rgba(124,58,237,0); }
+}
+
+@keyframes spinnerSpin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes progressShrink {
+  from { width: 100%; }
+  to   { width: 0%; }
+}
+
+/* ── Utility classes ──────────────────────────────────────── */
+
+.animate-fade-in-up  { animation: fadeInUp  0.45s cubic-bezier(.22,1,.36,1) both; }
+.animate-scale-in    { animation: scaleIn   0.25s cubic-bezier(.22,1,.36,1) both; }
+.animate-ticket-drop { animation: ticketDrop 0.55s cubic-bezier(.34,1.56,.64,1) both; }
+
+/* Card entrance stagger */
+.stagger-1 { animation-delay: 0.04s; }
+.stagger-2 { animation-delay: 0.09s; }
+.stagger-3 { animation-delay: 0.14s; }
+.stagger-4 { animation-delay: 0.19s; }
+.stagger-5 { animation-delay: 0.24s; }
+.stagger-6 { animation-delay: 0.29s; }
+
+/* Animated gradient hero */
+.gradient-hero {
+  background: linear-gradient(135deg, #f5f3ff, #fdf2ff, #fffbeb, #f0fdf4);
+  background-size: 300% 300%;
+  animation: gradientShift 8s ease infinite;
+}
+
+/* Gradient button */
+.btn-gradient {
+  background: linear-gradient(135deg, #7c3aed, #a855f7, #c026d3);
+  background-size: 200% 200%;
+  animation: gradientShift 3s ease infinite;
+  box-shadow: 0 4px 20px rgba(124,58,237,0.35);
+  transition: box-shadow 0.2s, transform 0.15s;
+}
+.btn-gradient:hover {
+  box-shadow: 0 6px 28px rgba(124,58,237,0.5);
+  transform: translateY(-1px);
+}
+.btn-gradient:active  { transform: translateY(0); }
+.btn-gradient:disabled {
+  opacity: 0.5;
+  animation: none;
+  background: #c4b5fd;
+  box-shadow: none;
+  transform: none;
+}
+
+/* Shimmer skeleton */
+.skeleton {
+  background: linear-gradient(90deg, #f3f0fa 25%, #ebe6f7 50%, #f3f0fa 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.6s infinite;
+  border-radius: 8px;
+}
+
+/* Ticket perforated divider */
+.ticket-tear {
+  position: relative;
+}
+.ticket-tear::before,
+.ticket-tear::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 22px;
+  height: 22px;
+  background: #f3f4f6;
+  border-radius: 50%;
+  z-index: 10;
+}
+.ticket-tear::before { left: -11px; }
+.ticket-tear::after  { right: -11px; }
+
+/* Pulse glow on active step */
+.pulse-glow { animation: pulseGlow 1.6s ease-in-out infinite; }
+
+/* Violet spinner */
+.spinner {
+  width: 20px; height: 20px;
+  border: 2.5px solid #ede9fe;
+  border-top-color: #7c3aed;
+  border-radius: 50%;
+  animation: spinnerSpin 0.75s linear infinite;
+}
+.spinner-sm { width: 14px; height: 14px; border-width: 2px; }
+.spinner-lg { width: 40px; height: 40px; border-width: 3px; }
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #7c3aed, #c026d3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Card hover lift */
+.card-hover {
+  transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s;
+}
+.card-hover:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(124,58,237,0.12);
+  border-color: #c4b5fd;
+}
