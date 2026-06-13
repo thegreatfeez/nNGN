@@ -32,6 +32,11 @@ app.use("/api/admin/tickets", adminAuth, adminTicketsRouter);
 
 app.get("/api/health", (_req, res) => res.json({ ok: true }));
 
-app.listen(PORT, () => {
-  console.log(`TicketNGN backend running on http://localhost:${PORT}`);
-});
+// Local dev
+if (process.env.NODE_ENV !== "production") {
+  app.listen(PORT, () => {
+    console.log(`TicketNGN backend running on http://localhost:${PORT}`);
+  });
+}
+
+export default app;
