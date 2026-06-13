@@ -1,23 +1,24 @@
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-import { Navbar } from "../components/layout/Navbar";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { DashboardLayout } from "../components/layout/DashboardLayout";
 import { Dashboard } from "../pages/Dashboard";
 import { VaultPage } from "../pages/VaultPage";
 import { LiquidationPage } from "../pages/LiquidationPage";
-
-function Layout() {
-  return (
-    <div className="min-h-screen bg-slate-900 text-slate-100">
-      <Navbar />
-      <Outlet />
-    </div>
-  );
-}
+import { LandingPage } from "../pages/LandingPage";
+import { ComingSoon } from "../pages/ComingSoon";
 
 const router = createBrowserRouter([
   {
-    element: <Layout />,
+    path: "/",
+    element: <LandingPage />,
+  },
+  {
+    path: "/coming-soon",
+    element: <ComingSoon />,
+  },
+  {
+    element: <DashboardLayout />,
     children: [
-      { path: "/", element: <Dashboard /> },
+      { path: "/dashboard", element: <Dashboard /> },
       { path: "/vault", element: <VaultPage /> },
       { path: "/liquidate", element: <LiquidationPage /> },
     ],
