@@ -29,6 +29,7 @@ function calcPreviewHF(collateralNgn: number, currentDebt: number, mintAmount: n
 
 export const MintForm: FC<Props> = ({ vault }) => {
   const [amount, setAmount] = useState("");
+  const [lastMinted, setLastMinted] = useState<number | null>(null);
   const { mintNgn, isPending } = useMintNgn();
   const { data: ethNgnPrice } = useEthNgnPrice();
 
@@ -68,6 +69,7 @@ export const MintForm: FC<Props> = ({ vault }) => {
     try {
       await mintNgn(parsedAmount);
       toast.success(`Minted ${formatNgn(parsedAmount)} nNGN!`);
+      setLastMinted(parsedAmount);
       setAmount("");
     } catch (err) {
       toast.error(parseContractError(err), { duration: 6000 });
@@ -89,8 +91,8 @@ export const MintForm: FC<Props> = ({ vault }) => {
 
       {/* Available to mint */}
       <div className="rounded-xl bg-slate-700/40 px-4 py-3 flex items-center justify-between">
-        <span className="text-xs text-slate-400">Available to mint</span>
-        <span className="text-sm font-bold text-emerald-400">
+        <span className="text-xs text-white/60">Available to mint</span>
+        <span className="text-sm font-bold text-white">
           {maxMintable === null   ? "—" :
            maxMintable <= 0      ? "₦0.00 (vault full)" :
                                    formatNgn(maxMintable)}
@@ -110,16 +112,21 @@ export const MintForm: FC<Props> = ({ vault }) => {
             : undefined
         }
       />
+      {parsedAmount > 0 && ethNgnPrice && (
+        <p className="text-xs text-slate-500 dark:text-slate-400 -mt-2">
+          ≈ {(parsedAmount / ethNgnPrice).toFixed(6)} ETH
+        </p>
+      )}
 
       {feeDisplay !== null && feeDisplay > 0 && (
-        <p className="text-xs text-slate-500">
+        <p className="text-xs text-slate-500 dark:text-slate-400">
           Mint fee (0.5%): {formatNgn(feeDisplay)}
         </p>
       )}
 
       {previewHF !== null && (
         <div className="rounded-xl bg-slate-700/40 px-4 py-3 flex items-center justify-between">
-          <span className="text-xs text-slate-400">Health Factor after mint</span>
+          <span className="text-xs text-white/60">Health Factor after mint</span>
           <span className={`text-sm font-bold tabular-nums ${hfColor}`}>
             {previewHF > 1e9 ? "∞" : previewHF.toFixed(2)}
           </span>
@@ -129,6 +136,25 @@ export const MintForm: FC<Props> = ({ vault }) => {
       <Button type="submit" loading={isPending} disabled={isDisabled} className="w-full">
         Mint nNGN
       </Button>
+
+      {lastMinted !== null && (
+        <div className="rounded-xl bg-emerald-500/10 border border-emerald-500/20 px-4 py-4 space-y-2">
+          <p className="text-sm font-semibold text-emerald-400">
+            You just minted {formatNgn(lastMinted)} nNGN!
+          </p>
+          <p className="text-xs text-emerald-800 leading-relaxed">
+            Want to put it to use? Buy event tickets on our live testnet integration — powered entirely by nNGN.
+          </p>
+          <a
+            href="https://event-ticket-two.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-400 hover:text-emerald-300 transition-colors"
+          >
+            Browse Events →
+          </a>
+        </div>
+      )}
     </form>
   );
 };

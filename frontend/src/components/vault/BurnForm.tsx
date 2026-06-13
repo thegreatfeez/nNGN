@@ -69,8 +69,8 @@ export const BurnForm: FC<Props> = ({ vault }) => {
 
       {/* Debt info */}
       <div className="rounded-xl bg-slate-700/40 px-4 py-3 flex items-center justify-between">
-        <span className="text-xs text-slate-400">Outstanding debt</span>
-        <span className="text-sm font-bold text-slate-100">{formatNgn(maxDebt)}</span>
+        <span className="text-xs text-white/60">Outstanding debt</span>
+        <span className="text-sm font-bold text-white">{formatNgn(maxDebt)}</span>
       </div>
 
       <Input
@@ -82,9 +82,14 @@ export const BurnForm: FC<Props> = ({ vault }) => {
         disabled={maxDebt <= 0}
         onMax={maxDebt > 0 ? () => setAmount(maxDebt.toFixed(2)) : undefined}
       />
+      {parsedAmount > 0 && ethNgnPrice && (
+        <p className="text-xs text-slate-500 dark:text-slate-400 -mt-2">
+          ≈ {(parsedAmount / ethNgnPrice).toFixed(6)} ETH
+        </p>
+      )}
 
       {feeDisplay !== null && feeDisplay > 0 && (
-        <p className="text-xs text-slate-500">
+        <p className="text-xs text-slate-500 dark:text-slate-400">
           Burn fee (0.3%): {formatNgn(feeDisplay)} · Total nNGN needed:{" "}
           {formatNgn(parsedAmount + feeDisplay)}
         </p>
@@ -93,7 +98,7 @@ export const BurnForm: FC<Props> = ({ vault }) => {
       {/* HF preview after repay */}
       {previewHF !== null && (
         <div className="rounded-xl bg-slate-700/40 px-4 py-3 flex items-center justify-between">
-          <span className="text-xs text-slate-400">Health Factor after repay</span>
+          <span className="text-xs text-white/60">Health Factor after repay</span>
           <span className={`text-sm font-bold tabular-nums ${hfColor}`}>
             {previewHF > 1e9 ? "∞" : previewHF.toFixed(2)}
           </span>

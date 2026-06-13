@@ -1,18 +1,21 @@
 import { type FC, useState } from "react";
 import { useBalance, useAccount } from "wagmi";
 import { useDeposit } from "../../hooks/useVault";
+import { useEthNgnPrice } from "../../hooks/useEthNgnPrice";
 import { Input } from "../shared/Input";
 import { Button } from "../shared/Button";
 import toast from "react-hot-toast";
-import { weiToEth, parseContractError } from "../../lib/utils";
+import { weiToEth, formatNgn, parseContractError } from "../../lib/utils";
 
 export const DepositForm: FC = () => {
   const [amount, setAmount] = useState("");
   const { address } = useAccount();
   const { data: balance } = useBalance({ address });
   const { deposit, isPending } = useDeposit();
+  const { data: ethNgnPrice } = useEthNgnPrice();
 
   const maxEth = balance ? weiToEth(balance.value) : 0;
+  const parsedAmount = parseFloat(amount) || 0;
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -37,7 +40,12 @@ export const DepositForm: FC = () => {
         onChange={(e) => setAmount(e.target.value)}
         onMax={() => setAmount(Math.max(0, maxEth - 0.01).toFixed(4))}
       />
-      <p className="text-xs text-slate-500">Balance: {maxEth.toFixed(4)} ETH</p>
+      {parsedAmount > 0 && ethNgnPrice && (
+        <p className="text-xs text-slate-500 dark:text-slate-400 -mt-2">
+          ≈ {formatNgn(parsedAmount * ethNgnPrice)}
+        </p>
+      )}
+      <p className="text-xs text-slate-500 dark:text-slate-400">Balance: {maxEth.toFixed(4)} ETH</p>
       <Button type="submit" loading={isPending} className="w-full">
         Deposit ETH
       </Button>

@@ -91,8 +91,8 @@ export const WithdrawForm: FC<Props> = ({ vault }) => {
 
       {/* Available to withdraw */}
       <div className="rounded-xl bg-slate-700/40 px-4 py-3 flex items-center justify-between">
-        <span className="text-xs text-slate-400">Available to withdraw</span>
-        <span className="text-sm font-bold text-emerald-400">
+        <span className="text-xs text-white/60">Available to withdraw</span>
+        <span className="text-sm font-bold text-white">
           {ethNgnPrice === null && debtNgn > 0
             ? "—"
             : maxWithdraw <= 0
@@ -114,11 +114,16 @@ export const WithdrawForm: FC<Props> = ({ vault }) => {
             : undefined
         }
       />
+      {parsedAmount > 0 && ethNgnPrice && (
+        <p className="text-xs text-slate-500 dark:text-slate-400 -mt-2">
+          ≈ ₦{(parsedAmount * ethNgnPrice).toLocaleString("en-NG", { maximumFractionDigits: 0 })}
+        </p>
+      )}
 
       {/* HF preview — only show when user has debt */}
       {previewHF !== null && (
         <div className="rounded-xl bg-slate-700/40 px-4 py-3 flex items-center justify-between">
-          <span className="text-xs text-slate-400">Health Factor after withdraw</span>
+          <span className="text-xs text-white/60">Health Factor after withdraw</span>
           <span className={`text-sm font-bold tabular-nums ${hfColor}`}>
             {previewHF > 1e9 ? "∞" : previewHF.toFixed(2)}
           </span>
