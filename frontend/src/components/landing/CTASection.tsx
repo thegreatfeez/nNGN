@@ -23,10 +23,10 @@ export const CTASection: FC = () => (
         Icon={BookOpen}
       />
       <CTACard
-        title="Test the Sandbox"
-        body="Experience frictionless borderless commerce. Try our demo e-commerce website integrated natively with nNGN."
-        label="Visit NairaMart"
-        href="https://app.nairamart.xyz"
+        title="Buy Event Tickets"
+        body="Purchase tickets to Nigeria's best events using nNGN — the naira stablecoin. Fast, borderless, on-chain."
+        label="Browse Events"
+        href="https://event-ticket-two.vercel.app/"
         variant="tertiary"
         Icon={ShoppingCart}
       />

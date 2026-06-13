@@ -8,9 +8,10 @@ type FooterLink = { label: string } & (
 
 const FOOTER_COLS: Record<string, FooterLink[]> = {
   Ecosystem: [
-    { label: "Dashboard",  to: "/dashboard" },
-    { label: "Liquidate",  to: "/liquidate" },
-    { label: "Faucets",    href: "#faucets", external: false },
+    { label: "Dashboard",     to: "/dashboard" },
+    { label: "Liquidate",     to: "/liquidate" },
+    { label: "Faucets",       href: "#faucets", external: false },
+    { label: "Event Tickets", href: "https://event-ticket-two.vercel.app/", external: true },
   ],
   Protocol: [
     { label: "Documentation", href: "/docs/index.html", external: true },
